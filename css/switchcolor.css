@@ -1,0 +1,17 @@
+	.ie8 .switch-style{ display :none;}
+	.switch-style{ position:fixed;top:30px; left:0px; z-index:10;}
+	.gear{ cursor:pointer; font-size:30px; background-color:#fff; color:#fff; background-color:#333; width:50px; height:45px; line-height:1.4em; text-align:center}
+	.tb-colors{ margin:0px; -webkit-transition: all 200ms ease; -moz-transition: all 200ms ease;
+	-o-transition: all 200ms ease; transition: all 200ms ease;}
+	.tb-colors td { cursor:pointer; width:35px; height:35px }
+	.movetoleft{ margin-left:-140px; -webkit-transition: all 200ms ease;-moz-transition: all 200ms ease; -o-transition: all 200ms ease; transition: all 200ms ease;}
+	.tb-colors{-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2);
+-moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); box-shadow: 0 1px 4px rgba(0,0,0,.2);}
+	.tb-colors-header{padding:10px 0px; background-color:#fff; text-align:center; text-transform:uppercase; font-size:13px; border-bottom:solid 1px #ddd}
+	
+	.cr{ float:left; font-size:12px; color:#666}
+	.cr a{ border-bottom:none; color:#ccc; line-height:2.3em}
+
+@media (max-width:767px) {
+	.cr{ display:none }
+}
