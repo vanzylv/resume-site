@@ -117,18 +117,6 @@
 	}
 
 
-	// On hover thumbnail
-	//*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*
-	$('.item-content').hover(function(){
-		$(this).find('.img-hover').removeClass('bounceOut').addClass('animated bounceIn show');
-	}, function(){
-		if (getInternetExplorerVersion < 9 ){
-			$(this).find('.img-hover').removeClass('bounceIn').addClass('bounceOut');
-		} else {
-			$(this).find('.img-hover').removeClass('animated bounceIn show');
-		}
-	})
-
 	// Initialize isotope
 	//*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*
 	 var $container = $('#container');
@@ -160,9 +148,9 @@
 			trackColor: trackChangeColor,
 			scaleColor: false,
 			lineCap: 'butt',
-			lineWidth: 25,
+			lineWidth: 10,
 			animate: 1000,
-			size:130
+			size:90
 		});
 	}
 
@@ -188,253 +176,8 @@
 	});
 
 
-	// Initialize map
-	//*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*
-	function initialize(lat, lng) {
-		var myOptions = {
-		  zoom: 16,
-		  center: new google.maps.LatLng(lat, lng),
-		  mapTypeId: google.maps.MapTypeId.ROADMAP,
-		  scrollwheel: false,
-		  mapTypeControl: false,
-		  scaleControl: false,
-		  styles: // Styling google maps
-			[
-			  {
-				"featureType": "water",
-				"stylers": [
-				  { "color": "#cccdcc" }
-				]
-			  },{
-				"featureType": "transit",
-				"stylers": [
-				  { "visibility": "off" }
-				]
-			  },{
-				"featureType": "road.highway",
-				"elementType": "geometry.fill",
-				"stylers": [
-				  { "visibility": "on" },
-				  { "color": "#c9c9ca" }
-				]
-			  },{
-				"featureType": "road.highway",
-				"elementType": "geometry.fill"  },{
-				"featureType": "road.highway",
-				"elementType": "geometry",
-				"stylers": [
-				  { "hue": "#ff0000" },
-				  { "saturation": -100 },
-				  { "lightness": 1 }
-				]
-			  },{
-				"featureType": "road.highway.controlled_access",
-				"elementType": "labels.text",
-				"stylers": [
-				  { "visibility": "on" },
-				  { "hue": "#ff0000" },
-				  { "lightness": -1 },
-				  { "gamma": 1.02 },
-				  { "weight": 0.1 }
-				]
-			  },{
-				"featureType": "road.arterial",
-				"elementType": "geometry.fill",
-				"stylers": [
-				  { "visibility": "on" },
-				  { "color": "#e8eced" }
-				]
-			  },{
-				"featureType": "road.arterial",
-				"elementType": "labels.text",
-				"stylers": [
-				  { "weight": 0.1 },
-				  { "visibility": "on" }
-				]
-			  },{
-				"featureType": "road.highway",
-				"elementType": "labels.text",
-				"stylers": [
-				  { "weight": 0.1 },
-				  { "visibility": "on" },
-				  { "color": "#333333" }
-				]
-			  },
-			   {
-				"featureType": "road.highway",
-				"elementType": "labels.text.fill",
-				"stylers": [
-				  { "visibility": "off" },
-				  { "weight": 0.1 }
-				]
-			  },
-
-			  {
-				"featureType": "poi",
-				"elementType": "geometry",
-				"stylers": [
-				  { "color": "#dbdadb" },
-				  { "visibility": "on" }
-				]
-			  },{
-			  }
-			]
-		};
-
-		var map = new google.maps.Map( document.getElementById("map_canvas"), myOptions );
-
-		var myLatLng = new google.maps.LatLng(lat, lng);
-		var beachMarker = new google.maps.Marker({
-			position: myLatLng,
-			map: map,
-			icon: gIcon
-		});
-	}
 
 
-	// Lightbox
-	//*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*
-	var screenWidth, marginLeft;
-
-	var stateObj = {foo: "bar"};
-    var pathname = window.location.pathname;
-
-	function AnimateLightBox( poplink, postWidth ){
-
-		var contentWidth = postWidth ? 0.62 : 0.75;
-
-		if ( postWidth ) {
-			screenWidth = ($(window).width() * contentWidth) > 770 ?  770 : $(window).width() * contentWidth;
-		} else {
-			screenWidth = ($(window).width() * contentWidth) > 970 ?  970 : $(window).width() * contentWidth;
-		}
-
-		marginLeft =  ((screenWidth) / 2);
-
-		// Change the url of the page to the one in the post
-		history.pushState( stateObj, 'page', poplink );
-
-		$('body').append('<div class="overlay" /><div class="overlay-container" />').addClass('noscroll');
-
-		$('.overlay').animate({ opacity : '1' },'fast', function(){
-
-			$('.overlay-container').append('<div class="popup-back load-lightbox" /><div class="close-btn"><span class="left"></span><span class="right"></span></div><div class="popup" /> ');
-
-			$.ajax({
-				url: poplink,
-				data: {},
-				cache: false,
-				success: function(data){
-					// Change the url of the page to the one in the post
-					history.pushState( stateObj, 'page', poplink );
-
-					$('.popup').empty().css({marginLeft : -marginLeft + 'px',  width : screenWidth + 'px'});
-
-					if ( $(window).width() > 940 ){
-						$('.popup').addClass('animated bounceInLeft')
-					} else {
-						$('.popup').animate({top: '+=100', opacity: 1}, 'fast','swing');
-					}
-
-					$('.popup-back').removeClass('load-lightbox');
-					// Get the information from the portfolio div
-					$('.popup').html($(data).find('.content-element')).fadeIn();
-
-					$('.popup-back, .close-btn').on ('click touchend',  function(e){
-
-						$('.popup').animate({top: '-=140', opacity: 0}, 'fast','linear', function(){
-							$('.overlay-container, .overlay').fadeOut('fast',function(){
-
-								$(this).remove();
-								$('body').removeClass('noscroll');
-							});
-
-							history.pushState(stateObj, "page", pathname);
-						});
-					})
-				},
-				complete: function(){
-
-					function scroller(){
-
-						var popHeight = $('.popup').height();
-					   $('.popup-back').height(popHeight);
-
-						if (! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-									$('.overlay-container').niceScroll({ autohidemode : false, cursorwidth: 9, cursorborder: "1px solid #fff", scrollspeed:100, cursorcolor: '#919191'});
-
-								}
-					  } // Scroller
-
-					if 	( $('.flexslider').length > 0 ){
-
-					// Flexslider for lightbox
-					  $('.flexslider').fitVids().flexslider({
-						animation: "fade",
-						smoothHeight: true,
-						useCSS: true,
-						touch: true,
-						video: true,
-						pauseOnHover: false,
-						slideshow: false,
-						start: function( slider ){
-
-							var sliderHeight = slider.slides.eq(0).height();
-							slider.height(sliderHeight);
-
-							setTimeout(scroller, 600); // wait until the pop up resizes
-
-
-						 }//start
-
-					  }); //flexslider
-					} else {
-
-						if ( $('iframe').length > 0 ){
-					   		$('.media').fitVids();
-						}
-					   setTimeout(scroller, 600); // wait until the pop up resizes
-
-					}
-				}
-			});//ajax
-		});
-
-	}
-
-
-	// When the user click on thumbnails
-	//*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*
-	$('.open-popup').on('click touchend', function(e){
-
-		e.preventDefault();
-		var postWidth = false;
-
-		if ( $(window).width() >= 360 && ( navigator.appName !== 'Microsoft Internet Explorer') ){
-
-			e.preventDefault();
-			if ($(this).parents().hasClass('preview') || $(this).parents().hasClass('post_image')){
-				postWidth = true;
-			} else {
-				postWidth = false;
-			}
-			AnimateLightBox($(this).attr('href'), postWidth);
-		} else {
-			window.location = $(this).attr('href');
-		}
-	})
-
-	// Send Email
-	//*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*
-	$('form').submit(function(e){
-		e.preventDefault();
-		$('.loading').show();
-		$.post('sendmail.php', $('.form').serialize(), function(data){
-			$('.results').html(data);
-		}).success(function(){
-			$('.loading').hide();
-		})
-	})
 
 	// Flexslider
 	//*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*
@@ -449,9 +192,7 @@
 
 	});
 
-	// Fit videos not in a slider
-	//*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*
-	$('.media').fitVids();
+
 
 	// Placeholder for IE
 	//*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*

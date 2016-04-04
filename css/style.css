@@ -401,12 +401,12 @@ h4 + .charts, h4 + .progressbars, h3 + .charts, h3 + .progressbars, h2 + .charts
 }
 .entry-meta {
 	float: left;
-	font-weight: bold;
-	font-size: 18px
+	/*font-weight: bold;*/
+	/*font-size: 18px*/
 }
 .entry-val {
 	color: #000;
-	font-size: 26px;
+	font-size: 20px;
 	font-family: 'Roboto Condensed', sans-serif;
 	font-weight: bold;
 	text-align: right;
@@ -421,7 +421,7 @@ h4 + .charts, h4 + .progressbars, h3 + .charts, h3 + .progressbars, h2 + .charts
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-	clear: both
+	clear: both;
 }
 .progress .bar {
 	background: none;
@@ -429,7 +429,7 @@ h4 + .charts, h4 + .progressbars, h3 + .charts, h3 + .progressbars, h2 + .charts
 .progress .bar span {
 	background-color: skyblue;
 	display: block;
-	height: 25px;
+	height: 15px;
 	width: 0;
 	-webkit-transition: width 0.7s ease-in-out;
 	-moz-transition: width 0.7s ease-in-out;
@@ -664,6 +664,7 @@ section {
 }
 .progress .bar {
 	border-right: solid 3px #000
+
 }
 }
  @media (max-width:940px) {

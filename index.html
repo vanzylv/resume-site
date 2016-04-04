@@ -20,7 +20,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="css/animate.css" rel="stylesheet" media="screen">
     <link href="css/flexslider.min.css" rel="stylesheet" media="screen">
-    <link href="css/style.min.css" rel="stylesheet" media="all">
+    <link href="css/style.css" rel="stylesheet" media="all">
     <link href="css/switchcolor.css" rel="stylesheet" media="screen">
     <!--[if !IE 8]><!-->
     <!-- Color -->
@@ -43,8 +43,8 @@
         <div class="navbar-default">
             <div class="container">
                 <a class="print" href="#" onClick="window.print();return false "><i class="fa fa-print"></i></a>
-                <div class="col-md-3"> <a class="brand my-name" href="#about">Vickus<br>
-        <span>van Zyl</span></a>
+                <div class="col-md-3"> <a class="brand my-name" href="#about">
+        <span>V van Zyl</span></a>
                 </div>
 
                 <div class="col-md-9">
@@ -78,7 +78,7 @@
                             <p><i class="fa fa-skype"></i>&nbsp; <a href="skype:vanzylv?userinfo">vanzylv</a></p>
                             <p><i class="fa fa-envelope"></i>&nbsp; <a href="mailto:vanzylv@gmail.com"> vanzylv@gmail.com</a></p>
                             <p><i class="fa fa-globe"></i>&nbsp; <a href="http://www.zenburn.co.za" target="_blank"> www.zenburn.co.za</a></p>
-                            <p><i class="fa fa-download"></i>&nbsp; <a href="#"> Download Resume</a></p>
+                            <p><i class="fa fa-download"></i>&nbsp; <a href="/Vickus van Zyl - CV.docx" target='_blank'> Download Resume</a></p>
                         </address>
                     </div>
                 </div>
@@ -226,53 +226,58 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <ul class="nav nav-tabs" id="tab-1">
-                            <li class="active"><a href="#tab1" data-toggle="tab">Tab 1</a></li>
-                            <li><a href="#tab2" data-toggle="tab">Tab 2</a></li>
-                            <li><a href="#tab3" data-toggle="tab">Tab 3</a></li>
-                            <li><a href="#tab4" data-toggle="tab">Tab 4</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tab1">Tart carrot cake chocolate cake soufflé apple pie pudding. Lemon drops chupa chups bear claw wafer icing tart jujubes. Dessert pudding biscuit marshmallow jelly halvah macaroon icing. Chocolate cake danish cheesecake marzipan sweet donut carrot cake biscuit. </div>
-                            <div class="tab-pane" id="tab2">Jelly chocolate oat cake jujubes sugar plum chupa chups wafer jelly-o. Tart cheesecake unerdwear.com jujubes halvah chocolate cake marshmallow. </div>
-                            <div class="tab-pane" id="tab3">Chupa chups soufflé brownie gummies gummi bears gummi bears. Soufflé toffee cake sugar plum croissant jelly. Croissant halvah jelly beans chocolate bar cookie marzipan pie fruitcake candy canes. </div>
-                            <div class="tab-pane" id="tab4">Sweet oat cake pudding pie. Marzipan pie cotton candy sesame snaps. Dragée chupa chups cookie gummi bears gummies danish marshmallow.</div>
-                        </div>
-                        <!--/.tab -->
-                        <h3>Programming Skills</h3>
-                        <div class="charts">
+                       
+                        <h4>Programming Skills</h4>
+                        <div class="charts" style='padding-top: 35px'>
                             <div class="chart">
-                                <div class="percentage" data-percent="55"><span>55%</span></div>
-                                <div class="txt">Wordpress</div>
+                                <div class="percentage" data-percent="95"><span>95%</span></div>
+                                <div style='margin-top: 10px' class="small text-center">Angular JS</div>
                             </div>
                             <div class="chart">
-                                <div class="percentage" data-percent="46"><span>46%</span></div>
-                                <div class="txt">PHP</div>
+                                <div class="percentage" data-percent="95"><span>95%</span></div>
+                                <div style='margin-top: 10px' class="small text-center">Javascript / jQuery</div>
+                                
                             </div>
+                            <div style='padding-bottom: 35px' class="chart">
+                                <div class="percentage" data-percent="100"><span>100%</span></div>
+                                <div style='margin-top: 10px' class="small text-center">Sass / Less / CSS</div>
+                            </div>
+
                             <div class="chart">
-                                <div class="percentage" data-percent="16"><span>16%</span></div>
-                                <div class="txt">Javascript</div>
+                                <div class="percentage" data-percent="85"><span class="small">85%</span></div>
+                                <div style='margin-top: 10px' class="small text-center">.NET</div>
                             </div>
+
+                               <div class="chart">
+                                <div class="percentage" data-percent="80"><span>80%</span></div>
+                                <div style='margin-top: 10px' class="small text-center">Java / Java EE</div>
+                            </div>
+
+                               <!-- <div class="chart">
+                                <div class="percentage" data-percent="75"><span>75%</span></div>
+                                <div style='margin-top: 10px' class="small text-center">Node JS</div>
+                            </div> -->
+
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h3>Graphic Design Skills</h3>
+                        <h4>Other</h4>
                         <div class="progressbars">
-                            <span class="entry-meta">Photoshop</span> <span class="entry-val">90%</span>
-                            <div class="progress">
-                                <div class="bar bg-color" style="width: 90%;"><span></span></div>
+                            <span class="small entry-meta">Protractor / Jasmine</span> <span class="entry-val">80%</span>
+                            <div style='height:15px' class="progress">
+                                <div class="bar bg-color" style="width: 80%;"><span></span></div>
                             </div>
-                            <span class="entry-meta">Illustrator</span> <span class="entry-val">60%</span>
-                            <div class="progress">
-                                <div class="bar bg-color" style="width: 60%;"><span></span></div>
+                            <span class="small entry-meta">Java EE Containers</span> <span class="entry-val">75%</span>
+                            <div style='height:15px' class="progress">
+                                <div class="bar bg-color" style="width: 75%;"><span></span></div>
                             </div>
-                            <span class="entry-meta">3D Max</span> <span class="entry-val">30%</span>
-                            <div class="progress">
-                                <div class="bar bg-color" style="width: 30%;"><span></span></div>
+                            <span class="small entry-meta">Git / Grunt</span> <span class="entry-val">85%</span>
+                            <div style='height:15px' class="progress">
+                                <div class="bar bg-color" style="width: 85%;"><span></span></div>
                             </div>
-                            <span class="entry-meta">Premiere</span> <span class="entry-val">30%</span>
-                            <div class="progress">
-                                <div class="bar bg-color" style="width: 30%;"><span></span></div>
+                            <span class="small entry-meta">Node JS</span> <span class="entry-val">80%</span>
+                            <div style='height:15px' class="progress">
+                                <div class="bar bg-color" style="width: 80%;"><span></span></div>
                             </div>
                         </div>
                     </div>
